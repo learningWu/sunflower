@@ -20,9 +20,7 @@ import android.content.Context
 import com.google.samples.apps.sunflower.data.AppDatabase
 import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantRepository
-import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModelFactory
-import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModelFactory
-import com.google.samples.apps.sunflower.viewmodels.PlantListViewModelFactory
+import com.google.samples.apps.sunflower.viewmodels.*
 
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
@@ -57,5 +55,12 @@ object InjectorUtils {
     ): PlantDetailViewModelFactory {
         return PlantDetailViewModelFactory(getPlantRepository(context),
                 getGardenPlantingRepository(context), plantId)
+    }
+
+    fun providePlantEditViewModelFactory(
+            context: Context,
+            plantId: String
+    ): PlantEditViewModelFactory {
+        return PlantEditViewModelFactory(getPlantRepository(context), plantId)
     }
 }
